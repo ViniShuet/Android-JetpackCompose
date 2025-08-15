@@ -10,6 +10,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import ViniShuet.com.github.jetpackcompose.ui.theme.JetpackComposeTheme
+import androidx.compose.runtime.Composable
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,11 +19,20 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetpackComposeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Text(
-                        text = getString(R.string.hello_world),
+                    TextoCustomizado(
+                        "Primeira função composable",
                         modifier = Modifier.padding(innerPadding)
-                    )                }
+                    )
+                }
             }
         }
+    }
+
+    @Composable
+    fun TextoCustomizado(texto: String, modifier: Modifier) {
+        Text(
+            text = texto,
+            modifier = modifier.fillMaxSize()
+        )
     }
 }
