@@ -6,10 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import ViniShuet.com.github.jetpackcompose.ui.theme.JetpackComposeTheme
+import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
@@ -28,13 +30,18 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun Inicial(modifier: Modifier = Modifier) {
-        TextoCustomizado("Primeira função composable", modifier)
+        Column {
+            TextoCustomizado("Primeira função composable.", modifier)
+            TextoCustomizado("Seja bem vindo!", modifier)
+            TextoCustomizado("Olá usuário.", modifier)
+        }
     }
 
     @Composable
     fun TextoCustomizado(texto: String, modifier: Modifier = Modifier) {
         Text(
             text = texto,
+            color = Color.Red,
             modifier = modifier
         )
     }
