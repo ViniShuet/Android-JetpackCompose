@@ -18,6 +18,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.ui.res.painterResource
+
+
+
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
@@ -30,8 +38,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetpackComposeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    //Inicial(Modifier.padding(innerPadding))
                     NotificationBage(Modifier.padding(innerPadding))
+                    CardMensagem(Modifier.padding(innerPadding))
                 }
             }
         }
@@ -39,14 +47,22 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun Inicial(modifier: Modifier = Modifier) {
-        Column (modifier = modifier.background(color = Color.Blue)){
+        Column(modifier = modifier.background(color = Color.Blue)) {
             TextoCustomizado("Primeira função composable.")
             Row {
                 TextoCustomizado("Seja bem vindo!")
                 TextoCustomizado("Olá usuário.")
             }
-
         }
+    }
+
+    @Composable
+    fun TextoCustomizado(texto: String, modifier: Modifier = Modifier) {
+        Text(
+            text = texto,
+            color = Color.White,
+            modifier = modifier
+        )
     }
 
     @Composable
@@ -66,24 +82,50 @@ class MainActivity : ComponentActivity() {
                     .align(Alignment.TopEnd)
             )
         }
-
     }
 
     @Composable
-    fun TextoCustomizado(texto: String, modifier: Modifier = Modifier) {
-        Text(
-            text = texto,
-            color = Color.White,
-            modifier = modifier
-        )
+    fun CardMensagem(modifier: Modifier = Modifier) {
+        Row (modifier = modifier.padding(16.dp)) {
+            Image(
+                painter = painterResource(id = R.drawable.avatar),
+                contentDescription = "Foto do contato",
+                modifier = Modifier
+                    .size(52.dp)
+                    .clip(CircleShape)
+            )
+
+            Spacer(modifier = Modifier.width(8.dp))
+
+            Column {
+                Text(text = "Autor da mensagem")
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(text = "Conteúdo da mensagem")
+            }
+        }
     }
 
     @Preview(showBackground = true)
     @Composable
     fun PreviewFuncaoInicial() {
         JetpackComposeTheme {
-            //Initial()
+            Inicial()
+        }
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun PreviewNotificationBage() {
+        JetpackComposeTheme {
             NotificationBage()
+        }
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun PreviewCardMensagem() {
+        JetpackComposeTheme {
+            CardMensagem()
         }
     }
 }
