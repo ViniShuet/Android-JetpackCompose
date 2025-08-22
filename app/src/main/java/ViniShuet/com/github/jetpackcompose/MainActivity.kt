@@ -34,6 +34,7 @@ class MainActivity : ComponentActivity() {
             TextoCustomizado("Primeira função composable.", modifier)
             TextoCustomizado("Seja bem vindo!", modifier)
             TextoCustomizado("Olá usuário.", modifier)
+
         }
     }
 
