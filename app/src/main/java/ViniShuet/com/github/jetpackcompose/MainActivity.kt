@@ -14,7 +14,13 @@ import ViniShuet.com.github.jetpackcompose.ui.theme.JetpackComposeTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 
 class MainActivity : ComponentActivity() {
@@ -24,7 +30,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetpackComposeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Inicial(Modifier.padding(innerPadding))
+                    //Inicial(Modifier.padding(innerPadding))
+                    NotificationBage(Modifier.padding(innerPadding))
                 }
             }
         }
@@ -32,7 +39,7 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun Inicial(modifier: Modifier = Modifier) {
-        Column (modifier = modifier.background(color=Color.Blue)){
+        Column (modifier = modifier.background(color = Color.Blue)){
             TextoCustomizado("Primeira função composable.")
             Row {
                 TextoCustomizado("Seja bem vindo!")
@@ -40,6 +47,26 @@ class MainActivity : ComponentActivity() {
             }
 
         }
+    }
+
+    @Composable
+    fun NotificationBage(modifier: Modifier = Modifier) {
+        Box(modifier = modifier.padding(16.dp), contentAlignment = Alignment.Center) {
+            Box(
+                modifier = Modifier
+                    .size(24.dp)
+                    .clip(CircleShape)
+                    .background(color = Color.Green)
+            )
+            Box(
+                modifier = Modifier
+                    .size(8.dp)
+                    .clip(CircleShape)
+                    .background(color = Color.Red)
+                    .align(Alignment.TopEnd)
+            )
+        }
+
     }
 
     @Composable
@@ -55,7 +82,8 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun PreviewFuncaoInicial() {
         JetpackComposeTheme {
-            Inicial()
+            //Initial()
+            NotificationBage()
         }
     }
 }
