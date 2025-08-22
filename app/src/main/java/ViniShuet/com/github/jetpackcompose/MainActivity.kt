@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import ViniShuet.com.github.jetpackcompose.ui.theme.JetpackComposeTheme
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
@@ -32,8 +33,10 @@ class MainActivity : ComponentActivity() {
     fun Inicial(modifier: Modifier = Modifier) {
         Column {
             TextoCustomizado("Primeira função composable.", modifier)
-            TextoCustomizado("Seja bem vindo!", modifier)
-            TextoCustomizado("Olá usuário.", modifier)
+            Row {
+                TextoCustomizado("Seja bem vindo!", modifier)
+                TextoCustomizado("Olá usuário.", modifier)
+            }
 
         }
     }
